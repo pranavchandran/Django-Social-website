@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'images.apps.ImagesConfig',
+    'django_extensions',
+    'social_django',
     'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,6 +51,22 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    # 'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
+]
+
+ALLOWED_HOSTS = [
+    'mysite.com',
+    'local-host',
+    '127.0.0.1'
 ]
 
 ROOT_URLCONF = 'bookmarks.urls'
@@ -138,3 +157,15 @@ EMAIL_USE_TLS = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+SOCIAL_AUTH_FACEBOOK_KEY = '3785542734814571' #Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '45c0a0f940530213a7ed1f179ca4996c'
+#Extra Permissions
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+# After creating twitter APP
+# SOCIAL_AUTH_TWITTER_KEY = 'XXX'
+# SOCIAL_AUTH_TWITTER_SECRET = 'XXX' #Twitter API Secret
+
+# Google Authentication
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '992192896736-i1onuuesr1ih6evh7nta3vip4g46l0eq.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'h568IhUpv8my2h-i4xakdM_k'
