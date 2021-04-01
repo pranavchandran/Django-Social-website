@@ -1,6 +1,6 @@
-from django.cotrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.models import ContentType
 from .models import Action
-import datettime
+import datetime
 from django.utils import timezone
 
 def create_action(user, verb, target=None):

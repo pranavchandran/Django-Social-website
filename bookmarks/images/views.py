@@ -8,6 +8,7 @@ from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
 # pagination
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from actions.utils import create_action
 
 # Create your views here.
 @login_required
@@ -22,6 +23,7 @@ def image_create(request):
             # assign current user to the item
             new_item.user = request.user
             new_item.save()
+            create_action(request.user, 'bookmarked image', new_item)
             messages.success(request, 'Image added Successfully')
             # redirect to the new created item detail view
             return redirect(new_item.get_absolute_url())
