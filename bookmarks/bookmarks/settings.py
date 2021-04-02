@@ -65,6 +65,10 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth',
 ]
 
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
+
 ALLOWED_HOSTS = [
     'mysite.com',
     'local-host',
